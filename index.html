@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Javascript Drumkit</title>
+<style>
+	body{font-family:arial;margin:0;padding:0;background-image:url("https://images.pexels.com/photos/96380/pexels-photo-96380.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");background-repeat:no-repeat;background-size:cover;}
+	.keys{display:flex;justify-content:center;height:100vh;align-items:center;}
+	.key{width:100px;height:100px;color:#fff;background-color:rgba(0, 0, 0, 0.5);display:flex;justify-content:center;align-items:center;padding:10px;border-radius:5px;margin:0 15px;flex-wrap:wrap;align-content:center;border:5px solid transparent;}
+	.key span{margin-top:10px;}
+	.key kbd{flex-basis:100%;font-size:30px;text-align:center;}
+	.key .active{border-color:yellow;}
+</style>
+</head>
+
+<body>
+
+<div class="keys">
+	<div data-key="65" class="key">
+		<kbd>A</kbd>
+		<span class="sound">Clap</span>
+	</div>
+	<div data-key="83" class="key">
+		<kbd>S</kbd>
+		<span class="sound">Hihat</span>
+	</div>
+	<div data-key="68" class="key">
+		<kbd>D</kbd>
+		<span class="sound">Kick</span>
+	</div>
+</div>
+
+<audio data-key="65" src="sound/clap.mp3"> </audio>
+<audio data-key="83" src="sound/hihat.mp3"> </audio>
+<audio data-key="68" src="sound/kick.mp3"> </audio>
+
+<script>
+	window.addEventListener('keydown', function(e){
+		const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+		if(!audio) return; // stop function running
+		audio.play();
+		audio.currentTime = 0; // start from first
+		console.log(key);
+		key.classList.add('playing');
+	})
+</script>
+</body>
+</html>
